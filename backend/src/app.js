@@ -29,6 +29,11 @@ app.use(limiter);
 
 app.use(morgan('dev'));
 
+// Root welcome/redirect
+app.get('/', (req, res) => {
+	res.redirect('/api-docs');
+});
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api/v1', v1Routes);
 
